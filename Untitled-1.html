@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .context {
+            background-color: black;
+        }
+
+        canvas,
+        audio {
+            display: block;
+            margin: 0 auto;
+        }
+
+        audio {
+            margin-top: 10px;
+        }
+
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 150;
+        }
+
+        .header {
+            position: relative;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            background-color: #27a0cd;
+            color: #fff;
+            letter-spacing: 1.5px;
+        }
+
+        .menu-icon {
+            position: absolute;
+            left: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            width: 35px;
+            height: 3px;
+            padding: 8px 0;
+            border-top: 3px solid;
+            border-bottom: 3px solid;
+            background-color: currentColor;
+            background-clip: content-box;
+        }
+
+        .menu-icon:hover {
+            cursor: pointer;
+        }
+
+        .menu--visible {
+            pointer-events: auto;
+        }
+
+        .app-menu {
+            position: relative;
+            max-width: 400px;
+            width: 90%;
+            height: 100%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            display: flex;
+            flex-direction: column;
+            /* will-change 为web开发者提供了一种告知浏览器该元素会有哪些变化的方法，这样浏览器可以在元素属性真正发生变化之前提前做好对应的优化准备工作。 这种优化可以将一部分复杂的计算工作提前准备好，使页面的反应更为快速灵敏 */
+            will-change: transform;
+            z-index: 160;
+            pointer-events: auto;
+            color: #fff;
+            background-color: #383a37;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 8%;
+            background-color: #403e41;
+            border-bottom: 1px solid #666;
+        }
+
+        .menu-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .menu--visible .app-menu {
+            -webkit-transform: none;
+            transform: none;
+        }
+
+        .menu--animatable .app-menu {
+            transition: all 130ms ease-in;
+        }
+
+        .menu--visible.menu--animatable .app-menu {
+            transition: all 330ms ease-out;
+        }
+
+        .menu:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            will-change: opacity;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+        }
+
+        .menu--visible.menu:after {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button id="button">点我</button>
+    <div id="div" class="container" data-content="我是你爸"></div> -->
+    <div class="menu">
+        <div class="app-menu">
+            <div class="menu-header">
+                Layout
+            </div>
+            <div class="menu-content">
+                Content...
+            </div>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="header">
+            High Performance
+            <div class="menu-icon"></div>
+        </div>
+    </div>
+
+    <div class="context">
+        <canvas id="canvas" width="600" height="600">您的浏览器不支持Canavs</canvas>
+        <audio id="audio" controls autoplay></audio>
+    </div>
+</body>
+
+</html>

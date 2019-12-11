@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+	"target": "es5",
+	"module": "esnext",
+	"removeComments": true,
+	"preserveConstEnums": true,
+	"forceConsistentCasingInFileNames": true,
+	"noImplicitReturns": true,
+	"noImplicitThis": true,
+	"noImplicitAny": true,
+	"noUnusedLocals": true,
+	"noUnusedParameters": true,
+	"strictNullChecks": true,
+	"importHelpers": true,
+	"suppressImplicitAnyIndexErrors": true,
+	"experimentalDecorators": true,
+	"downlevelIteration": true,
+	"allowSyntheticDefaultImports": true
+  },
+  "include": ["./**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
